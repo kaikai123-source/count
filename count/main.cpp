@@ -33,11 +33,12 @@ int main() {
 
 	for (int i = 0; i < src.rows; i++) {
 		for (int j = 0; j < src.cols; j++) {
-			int label = labelMat.at<int>(j, i);
-			result.at<cv::Vec3b>(j, i) = colors[label];
+			int label = labelMat.at<int>(i,j);
+			result.at<cv::Vec3b>(i,j)= colors[label]  ;
 		}
 	}
-
+	
+	//¹¹½¨box
 	for (int i = 1; i < com; i++) {
 		Rect box;
 		box.x = stateMat.at<int>(i, 0);
@@ -56,5 +57,5 @@ int main() {
 	imshow("src", src);
 	
 	waitKey(0);
-
+	return 0;
 }
